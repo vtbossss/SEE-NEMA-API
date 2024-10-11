@@ -46,7 +46,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "rest_framework_simplejwt",
     "api",
+    "drf_spectacular",
+    
 ]
 
 MIDDLEWARE = [
@@ -131,3 +134,33 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # Access token lifetime
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),  # Refresh token lifetime
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'SEE-NEMA API',
+    'DESCRIPTION': (
+        'SEE-NEMA API is a robust API built using Django REST Framework that allows users '
+        'to create and manage a personalized movie watchlist. Users can register for an account, '
+        'authenticate via JWT, and perform CRUD operations on their watchlist, including adding, '
+        'updating, and deleting movie entries. The API fetches movie details from a third-party '
+        'service, providing dynamic content for an enriched user experience.'
+    ),
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}

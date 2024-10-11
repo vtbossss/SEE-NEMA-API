@@ -4,3 +4,6 @@ pyyaml
 requests
 django-cors-headers
 python-dotenv
+djangorestframework-simplejwt
+drf-spectacular
+django-rest-swagger
