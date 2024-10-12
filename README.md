@@ -19,6 +19,7 @@ You can interact with the API directly using tools like [Postman](https://www.po
 {
   "username": "your_username",
   "password": "your_password",
+  "password_confirm": "your_password",
   "email": "your_email@example.com"  // Optional
 }
 ```
