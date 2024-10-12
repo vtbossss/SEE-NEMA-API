@@ -86,10 +86,7 @@ Authorization: Bearer <your_access_token>
 ```
 
 ## Contributing
-Contributions are welcome! If you're interested in improving the API or adding a frontend, feel free to reach out or submit a pull request.
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Contributions are welcome! If you're interested in improving the API or adding a frontend, feel free to reach out on [LinkedIn](https://www.linkedin.com/in/vtbossss/) or submit a pull request.
 
 ## Owner
 This API is developed and maintained by [vtbossss](https://www.linkedin.com/in/vtbossss/).
