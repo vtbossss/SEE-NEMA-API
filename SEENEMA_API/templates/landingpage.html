@@ -64,13 +64,14 @@
         <p>The SEE-NEMA API uses JWT (JSON Web Token) authentication. Before using the API, you need to register an account.</p>
 
         <h3>Register an Account</h3>
-        <p>To register, make a POST request to the <strong>/api/register/</strong> endpoint with your desired username and password:</p>
+        <p>To register, make a POST request to the <strong>/api/register/</strong> endpoint with your desired username, password, and password confirmation:</p>
         <pre><code>POST /api/register/
 Content-Type: application/json
 
 {
   "username": "your_username",
   "password": "your_password",
+  "password_confirm": "your_password",  // Required for confirmation
   "email": "your_email@example.com"  // Optional
 }</code></pre>
 
@@ -82,8 +83,8 @@ Content-Type: application/json
 }</code></pre>
 
         <h3>How to Authenticate</h3>
-        <p>After registering, obtain a JWT token by making a POST request to the <strong>/api/auth/</strong> endpoint with your username and password:</p>
-        <pre><code>POST /api/auth/
+        <p>After registering, obtain a JWT token by making a POST request to the <strong>/api/token/</strong> endpoint with your username and password:</p>
+        <pre><code>POST /api/token/
 Content-Type: application/json
 
 {
