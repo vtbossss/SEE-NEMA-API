@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the SEE-NEMA API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the SEE-NEMA API</h1>
+    <p>To view the API documentation, please visit the following endpoint:</p>
+    <h2><a href="/api/schema/docs/">/api/schema/docs/</a></h2>
+    <p>Explore the available endpoints and learn how to interact with the API.</p>
+
+    <h2>Authentication</h2>
+    <p>The SEE-NEMA API uses JWT (JSON Web Token) authentication. Before using the API, you need to register an account.</p>
+
+    <h3>Register an Account</h3>
+    <p>To register, make a POST request to the <strong>/api/register/</strong> endpoint with your desired username and password:</p>
+    <pre><code>POST /api/register/
+Content-Type: application/json
+
+{
+  "username": "your_username",
+  "password": "your_password",
+  "email": "your_email@example.com"  // Optional, if you want to include an email
+}</code></pre>
+
+    <p>If registration is successful, you will receive a success message.</p>
+
+    <h3>How to Authenticate</h3>
+    <p>After registering, obtain a JWT token by making a POST request to the <strong>/api/auth/</strong> endpoint with your username and password:</p>
+    <pre><code>POST /api/auth/
+Content-Type: application/json
+
+{
+  "username": "your_username",
+  "password": "your_password"
+}</code></pre>
+
+    <p>If successful, you will receive a token in the response:</p>
+    <pre><code>{
+  "token": "your_jwt_token"
+}</code></pre>
+
+    <p>Include the token in the Authorization header for all authenticated requests:</p>
+    <pre><code>Authorization: Bearer &lt;your_token&gt;</code></pre>
+
+    <h3>Example Request to Add a Movie</h3>
+    <p>Here's how you can add a movie to your watchlist:</p>
+    <pre><code>POST /api/watchlist/add/ 
+Content-Type: application/json
+Authorization: Bearer &lt;your_token&gt;
+
+{
+  "title": "Inception"
+}</code></pre>
+</body>
+</html>

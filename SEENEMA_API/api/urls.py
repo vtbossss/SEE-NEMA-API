@@ -5,7 +5,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-from .views import RegisterView, AddToWatchlistView, WatchlistView, WatchlistUpdateView, WatchlistDeleteView
+from .views import RegisterView, AddToWatchlistView, WatchlistView, WatchlistUpdateView, WatchlistDeleteView, landingview
 from drf_spectacular.views import SpectacularAPIView,SpectacularSwaggerView
 
 urlpatterns = [
@@ -21,4 +21,7 @@ urlpatterns = [
     path('watchlist/<int:pk>/delete/', WatchlistDeleteView.as_view(), name='delete-from-watchlist'),
     path('schema/',SpectacularAPIView.as_view(),name="schema"),
     path('schema/docs/',SpectacularSwaggerView.as_view(url_name="schema")),
+    
+    #landing page
+    path('',landingview,name='landing-page')
 ]

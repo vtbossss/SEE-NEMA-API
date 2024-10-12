@@ -6,8 +6,15 @@ from .serializers import WatchlistSerializer, RegisterSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from .services import fetch_movie_data
+from django.shortcuts import render
 
 # User Registration View
+
+
+def landingview(request):
+    return render(request,'landingpage.html')
+
+
 class RegisterView(generics.GenericAPIView):
     serializer_class = RegisterSerializer
 
