@@ -20,5 +20,5 @@ urlpatterns = [
     path('watchlist/<int:pk>/update/', WatchlistUpdateView.as_view(), name='update-watchlist'),
     path('watchlist/<int:pk>/delete/', WatchlistDeleteView.as_view(), name='delete-from-watchlist'),
     path('schema/',SpectacularAPIView.as_view(),name="schema"),
-    path('schema/docs',SpectacularSwaggerView.as_view(url_name="schema")),
+    path('schema/docs/',SpectacularSwaggerView.as_view(url_name="schema")),
 ]
