@@ -10,7 +10,8 @@ from django.shortcuts import render
 
 # User Registration View
 
-
+def Home(request):
+    return render(request,'index.html')
 def landingview(request):
     return render(request,'landingpage.html')
 
