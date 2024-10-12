@@ -55,9 +55,10 @@
         <p class="lead">Your personal movie watchlist manager API.</p>
 
         <h2>API Documentation</h2>
-        <p>To view the API documentation, please visit the following endpoint:</p>
-        <h3><a href="/api/schema/docs/" class="btn btn-primary">/api/schema/docs/</a></h3>
+        <p>The API documentation is generated using <strong>DRF Spectacular</strong> and can be used to try the API endpoints interactively. Please visit the following link:</p>
+        <h3><a href="/api/schema/docs/" class="btn btn-primary">API Documentation</a></h3>
         <p>Explore the available endpoints and learn how to interact with the API.</p>
+        <p>Refer below to check for example requests and responses.</p>
 
         <h2>Authentication</h2>
         <p>The SEE-NEMA API uses JWT (JSON Web Token) authentication. Before using the API, you need to register an account.</p>
@@ -73,7 +74,12 @@ Content-Type: application/json
   "email": "your_email@example.com"  // Optional
 }</code></pre>
 
-        <p>If registration is successful, you will receive a success message.</p>
+        <h4>Example Response</h4>
+        <pre><code>HTTP/1.1 201 Created
+{
+  "message": "User created successfully",
+  "token": "your_jwt_token"  // Returned only if token generation is included
+}</code></pre>
 
         <h3>How to Authenticate</h3>
         <p>After registering, obtain a JWT token by making a POST request to the <strong>/api/auth/</strong> endpoint with your username and password:</p>
@@ -85,8 +91,9 @@ Content-Type: application/json
   "password": "your_password"
 }</code></pre>
 
-        <p>If successful, you will receive a token in the response:</p>
-        <pre><code>{
+        <h4>Example Response</h4>
+        <pre><code>HTTP/1.1 200 OK
+{
   "token": "your_jwt_token"
 }</code></pre>
 
@@ -102,6 +109,73 @@ Authorization: Bearer &lt;your_token&gt;
 {
   "title": "Inception"
 }</code></pre>
+
+        <h4>Example Response</h4>
+        <pre><code>HTTP/1.1 201 Created
+{
+  "message": "Movie added to watchlist"
+}</code></pre>
+
+        <h4>Duplicate Movie Response</h4>
+        <pre><code>HTTP/1.1 200 OK
+{
+  "message": "Movie is already in your watchlist"
+}</code></pre>
+
+        <h3>Get Your Watchlist</h3>
+        <p>To retrieve your watchlist, make a GET request to the <strong>/api/watchlist/</strong> endpoint:</p>
+        <pre><code>GET /api/watchlist/
+Authorization: Bearer &lt;your_token&gt;</code></pre>
+
+        <h4>Example Response</h4>
+        <pre><code>HTTP/1.1 200 OK
+[
+  {
+    "id": 1,
+    "title": "Inception",
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology.",
+    "release_date": "2010-07-16",
+    "added_on": "2024-10-12T00:00:00Z"
+  },
+  {
+    "id": 2,
+    "title": "The Matrix",
+    "description": "A computer hacker learns from mysterious rebels about the true nature of his reality.",
+    "release_date": "1999-03-31",
+    "added_on": "2024-10-12T00:00:00Z"
+  }
+]</code></pre>
+
+        <h3>Update a Movie in Your Watchlist</h3>
+        <p>To update a movie's details, make a PUT request to the <strong>/api/watchlist/{id}/update/</strong> endpoint:</p>
+        <pre><code>PUT /api/watchlist/1/update/
+Content-Type: application/json
+Authorization: Bearer &lt;your_token&gt;
+
+{
+  "title": "Inception (Updated)",
+  "description": "An updated description for the movie."
+}</code></pre>
+
+        <h4>Example Response</h4>
+        <pre><code>HTTP/1.1 200 OK
+{
+  "id": 1,
+  "title": "Inception (Updated)",
+  "description": "An updated description for the movie.",
+  "release_date": "2010-07-16",
+  "added_on": "2024-10-12T00:00:00Z"
+}</code></pre>
+
+        <h3>Delete a Movie from Your Watchlist</h3>
+        <p>To delete a movie, make a DELETE request to the <strong>/api/watchlist/{id}/delete/</strong> endpoint:</p>
+        <pre><code>DELETE /api/watchlist/1/delete/
+Authorization: Bearer &lt;your_token&gt;</code></pre>
+
+        <h4>Example Response</h4>
+        <pre><code>HTTP/1.1 204 No Content
+// No response body
+</code></pre>
     </div>
 
     <footer>
