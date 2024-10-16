@@ -40,6 +40,7 @@ jobs:
 
     # Step 5: Run database migrations (optional)
     - name: Run Migrations (if applicable)
+      working-directory: SEENEMA_API
       run: |
         python manage.py migrate
 
